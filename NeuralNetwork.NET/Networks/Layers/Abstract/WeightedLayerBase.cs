@@ -14,7 +14,7 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
     /// The base class for all the network layers that have weights and biases as parameters
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
-    internal abstract class WeightedLayerBase : NetworkLayerBase
+    internal abstract class WeightedLayerBase : NetworkLayerBase, IWeightedLayer
     {
         #region Parameters
 

@@ -40,6 +40,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -49,6 +50,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             float[] biases = stream.ReadUnshuffled(bLength);
             if (!stream.TryRead(out CostFunctionType cost)) return null;
             return new OutputLayer(input, output.Size, weights, biases, activation, cost);
+            */
+
+            return null;
         }
     }
 }

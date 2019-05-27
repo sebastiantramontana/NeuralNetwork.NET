@@ -1,14 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using NeuralNetworkNET.APIs.Enums;
 using NeuralNetworkNET.APIs.Interfaces;
 using NeuralNetworkNET.APIs.Structs;
-using NeuralNetworkNET.Extensions;
 using NeuralNetworkNET.Networks.Activations;
 using NeuralNetworkNET.Networks.Activations.Delegates;
 using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace NeuralNetworkNET.Networks.Layers.Abstract
 {
@@ -35,10 +34,10 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
         }
 
         [JsonProperty(nameof(OutputInfo), Order = 3)]
-        public readonly TensorInfo _OutputInfo;
+        private TensorInfo _OutputInfo;
 
         /// <inheritdoc/>
-        public ref readonly TensorInfo OutputInfo
+        public ref TensorInfo OutputInfo
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => ref _OutputInfo;
@@ -49,6 +48,10 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
         /// </summary>
         [JsonProperty(nameof(ActivationType), Order = 4)]
         public ActivationType ActivationType { get; }
+
+        public float[] InputValues { get; protected set; }
+        public float[] SumValues { get; protected set; }
+        public float[] OutputValues { get; protected set; }
 
         /// <summary>
         /// Gets the list of activation and activation prime functions used in the network
@@ -98,10 +101,12 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
         /// <param name="stream">The target <see cref="Stream"/> to use to write the layer data</param>
         public virtual void Serialize([NotNull] Stream stream)
         {
+            /*
             stream.Write(LayerType);
             stream.Write(InputInfo);
             stream.Write(OutputInfo);
             stream.Write(ActivationType);
+            */
         }
     }
 }

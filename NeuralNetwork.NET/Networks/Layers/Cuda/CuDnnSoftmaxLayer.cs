@@ -100,6 +100,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] System.IO.Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation) && activation == ActivationType.Softmax) return null;
@@ -109,6 +110,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
             float[] biases = stream.ReadUnshuffled(bLength);
             if (!stream.TryRead(out CostFunctionType cost) && cost == CostFunctionType.LogLikelyhood) return null;
             return new CuDnnSoftmaxLayer(input, output.Size, weights, biases);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

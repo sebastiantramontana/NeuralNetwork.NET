@@ -305,7 +305,11 @@ namespace NeuralNetworkNET.Networks.Implementations
                                 {
                                     if (dropMap.TryGetValue(node, out Tensor mask)) CpuBlas.MultiplyElementwise(dy, mask, dy); // Optional dropout
                                     Tensor dJdw, dJdb;
-                                    if (processing.Parent is InputNode) weighted.Backpropagate(x, zMap[node], dy, Tensor.Null, out dJdw, out dJdb);
+                                    if (processing.Children.Any())
+                                    //if (processing.Parent is InputNode)
+                                    {
+                                        weighted.Backpropagate(x, zMap[node], dy, Tensor.Null, out dJdw, out dJdb);
+                                    }
                                     else if (weighted is OutputLayerBase output)
                                     {
                                         Tensor.New(x.Entities, output.InputInfo.Size, out Tensor dx);
@@ -496,8 +500,8 @@ namespace NeuralNetworkNET.Networks.Implementations
         /// <inheritdoc/>
         protected override void Serialize(Stream stream)
         {
-            stream.Write(InputInfo);
-            Graph.Serialize(stream);
+            //stream.Write(InputInfo);
+            //Graph.Serialize(stream);
         }
 
         /// <summary>
@@ -508,9 +512,13 @@ namespace NeuralNetworkNET.Networks.Implementations
         [MustUseReturnValue, CanBeNull]
         public static INeuralNetwork Deserialize([NotNull] Stream stream, ExecutionModePreference preference)
         {
+            /*
             if (!stream.TryRead(out TensorInfo inputs)) return null;
             Func<TensorInfo, ComputationGraph> f = ComputationGraph.Deserialize(stream, preference);
             return f == null ? null : new ComputationGraphNetwork(f(inputs));
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

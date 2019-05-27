@@ -686,6 +686,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
         [MustUseReturnValue, CanBeNull]
         public static INetworkLayer Deserialize([NotNull] System.IO.Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead<TensorInfo>(out _)) return null;
             if (!stream.TryRead<ActivationType>(out _)) return null;
@@ -695,6 +696,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
             float[] biases = stream.ReadUnshuffled(bLength);
             if (!stream.TryRead(out InceptionInfo info)) return null;
             return new CuDnnInceptionLayer(input, info, weights, biases);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

@@ -1,15 +1,14 @@
-﻿using System;
-using System.IO;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using NeuralNetworkNET.APIs.Enums;
 using NeuralNetworkNET.APIs.Interfaces;
 using NeuralNetworkNET.APIs.Structs;
 using NeuralNetworkNET.cpuDNN;
-using NeuralNetworkNET.Extensions;
 using NeuralNetworkNET.Networks.Layers.Abstract;
 using NeuralNetworkNET.Networks.Layers.Initialization;
 using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace NeuralNetworkNET.Networks.Layers.Cpu
 {
@@ -90,6 +89,10 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
                 if (ActivationType == ActivationType.Identity) a.Overwrite(z);
                 else CpuDnn.ActivationForward(z, ActivationFunctions.Activation, a);
             }
+
+            this.InputValues = x.GetLastValues();
+            this.SumValues = z.GetLastValues();
+            this.OutputValues = a.GetLastValues();
         }
 
         /// <inheritdoc/>
@@ -134,9 +137,11 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         /// <inheritdoc/>
         public override void Serialize(Stream stream)
         {
+            /*
             base.Serialize(stream);
             stream.Write(OperationInfo);
             stream.Write(KernelInfo);
+            */
         }
 
         /// <summary>
@@ -146,6 +151,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -156,6 +162,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             if (!stream.TryRead(out ConvolutionInfo operation) && operation.Equals(ConvolutionInfo.Default)) return null;
             if (!stream.TryRead(out TensorInfo kernels)) return null;
             return new ConvolutionalLayer(input, operation, kernels, output, weights, biases, activation);
+            */
+
+            return null;
         }
 
         #endregion

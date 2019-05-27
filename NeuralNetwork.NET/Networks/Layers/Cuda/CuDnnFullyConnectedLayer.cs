@@ -84,6 +84,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] System.IO.Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -92,6 +93,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
             if (!stream.TryRead(out int bLength)) return null;
             float[] biases = stream.ReadUnshuffled(bLength);
             return new CuDnnFullyConnectedLayer(input, output.Size, weights, biases, activation);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

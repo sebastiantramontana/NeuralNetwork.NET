@@ -294,6 +294,23 @@ namespace NeuralNetworkNET.APIs.Structs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public unsafe Span<float> AsSpan() => new Span<float>(this, Size);
 
+        /// <summary>
+        /// Returns the last values from this Tensor
+        /// </summary>
+        /// <returns></returns>
+        internal float[] GetLastValues()
+        {
+            var batch = this.ToArray2D();
+            var lastIndex = batch.GetLength(0) - 1;
+
+            var valuesCount = batch.GetLength(1);
+            var values = new float[valuesCount];
+
+            for (int i = 0; i < valuesCount; i++)
+                values[i] = batch[lastIndex, i];
+
+            return values;
+        }
         #endregion
 
         #region Memory management

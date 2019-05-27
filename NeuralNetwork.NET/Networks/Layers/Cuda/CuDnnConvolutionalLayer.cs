@@ -153,6 +153,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] System.IO.Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -163,6 +164,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
             if (!stream.TryRead(out ConvolutionInfo operation)) return null;
             if (!stream.TryRead(out TensorInfo kernels)) return null;
             return new CuDnnConvolutionalLayer(input, operation, kernels, output, weights, biases, activation);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

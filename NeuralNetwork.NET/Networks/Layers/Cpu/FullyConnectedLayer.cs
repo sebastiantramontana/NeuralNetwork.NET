@@ -45,6 +45,10 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
                 Tensor.New(z.Entities, z.Length, out a);
                 CpuDnn.ActivationForward(z, ActivationFunctions.Activation, a);
             }
+
+            this.InputValues = x.GetLastValues();
+            this.SumValues = z.GetLastValues();
+            this.OutputValues = a.GetLastValues();
         }
 
         /// <inheritdoc/>
@@ -83,6 +87,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -91,6 +96,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             if (!stream.TryRead(out int bLength)) return null;
             float[] biases = stream.ReadUnshuffled(bLength);
             return new FullyConnectedLayer(input, output.Size, weights, biases, activation);
+            */
+
+            return null;
         }
     }
 }

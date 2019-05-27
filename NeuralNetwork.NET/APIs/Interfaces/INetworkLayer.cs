@@ -22,6 +22,19 @@ namespace NeuralNetworkNET.APIs.Interfaces
         /// <summary>
         /// Gets the info on the layer outputs
         /// </summary>
-        ref readonly TensorInfo OutputInfo { get; }
+        ref TensorInfo OutputInfo { get; }
+
+        /// <summary>
+        /// The input values
+        /// </summary>
+        float[] InputValues { get; }
+        /// <summary>
+        /// The sum values
+        /// </summary>
+        float[]  SumValues { get; }
+        /// <summary>
+        /// The output values
+        /// </summary>
+        float[] OutputValues { get; }
     }
 }

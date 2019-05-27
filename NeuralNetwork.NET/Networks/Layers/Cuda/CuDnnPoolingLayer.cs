@@ -83,11 +83,15 @@ namespace NeuralNetworkNET.Networks.Layers.Cuda
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] System.IO.Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo _)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
             if (!stream.TryRead(out PoolingInfo operation)) return null;
             return new CuDnnPoolingLayer(input, operation, activation);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

@@ -37,6 +37,10 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
                 Tensor.New(z.Entities, z.Length, out a);
                 CpuDnn.SoftmaxForward(z, a);
             }
+
+            this.InputValues = x.GetLastValues();
+            this.SumValues = z.GetLastValues();
+            this.OutputValues = a.GetLastValues();
         }
 
         /// <inheritdoc/>
@@ -49,6 +53,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public new static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output)) return null;
             if (!stream.TryRead(out ActivationType activation) && activation == ActivationType.Softmax) return null;
@@ -58,6 +63,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             float[] biases = stream.ReadUnshuffled(bLength);
             if (!stream.TryRead(out CostFunctionType cost) && cost == CostFunctionType.LogLikelyhood) return null;
             return new SoftmaxLayer(input, output.Size, weights, biases);
+            */
+
+            return null;
         }
     }
 }

@@ -90,6 +90,7 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo output) || input != output) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
@@ -104,6 +105,9 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             if (!stream.TryRead(out int sLength)) return null;
             float[] sigma2 = stream.ReadUnshuffled(sLength);
             return new BatchNormalizationLayer(input, mode, weights, biases, iteration, mu, sigma2, activation);
+            */
+
+            return null;
         }
 
         /// <inheritdoc/>

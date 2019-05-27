@@ -103,7 +103,13 @@ namespace NeuralNetworkNET.Networks.Layers.Abstract
         {
             if (NetworkTrainer.BackpropagationInProgress) ForwardTraining(1f / (1 + Iteration++), x, out z, out a);
             else ForwardInference(x, out z, out a);
+
+            this.InputValues = x.GetLastValues();
+            this.SumValues = z.GetLastValues();
+            this.OutputValues = a.GetLastValues();
         }
+
+        
 
         /// <summary>
         /// Forwards the inputs through the batch normalization layer during an inference pass

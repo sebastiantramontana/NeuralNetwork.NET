@@ -43,6 +43,10 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
             CpuDnn.PoolingForward(x, InputInfo, z);
             Tensor.New(z.Entities, z.Length, out a);
             CpuDnn.ActivationForward(z, ActivationFunctions.Activation, a);
+
+            this.InputValues = x.GetLastValues();
+            this.SumValues = z.GetLastValues();
+            this.OutputValues = a.GetLastValues();
         }
 
         /// <inheritdoc/>
@@ -71,11 +75,15 @@ namespace NeuralNetworkNET.Networks.Layers.Cpu
         [MustUseReturnValue, CanBeNull]
         public static INetworkLayer Deserialize([NotNull] Stream stream)
         {
+            /*
             if (!stream.TryRead(out TensorInfo input)) return null;
             if (!stream.TryRead(out TensorInfo _)) return null;
             if (!stream.TryRead(out ActivationType activation)) return null;
             if (!stream.TryRead(out PoolingInfo operation) && operation.Equals(PoolingInfo.Default)) return null;
             return new PoolingLayer(input, operation, activation);
+            */
+
+            return null;
         }
     }
 }
